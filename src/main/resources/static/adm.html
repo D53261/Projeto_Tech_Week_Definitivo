@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Login ADM • Tech Week</title>
+
+  <link rel="stylesheet" href="/style.css">
+
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
+</head>
+
+<body class="body align-body">
+
+<div class="login-container">
+
+  <div class="login-card">
+
+    <div class="glow one"></div>
+    <div class="glow two"></div>
+
+    <div class="logo">
+      [ TECH<span class="accent">WEEK</span> ]
+      <small>ADMIN</small>
+    </div>
+
+    <h1>Painel Administrativo</h1>
+
+    <p class="subtitle">
+      Faça login para acessar o gerenciamento completo da Tech Week UniCesumar.
+    </p>
+
+    <div class="message error" id="error-msg" style="display:none;">
+      Usuário ou senha inválidos.
+    </div>
+
+    <form action="/login" method="POST">
+
+      <div class="form-group">
+        <label>Usuário</label>
+
+        <input
+                type="text"
+                name="username"
+                placeholder="Digite seu usuário"
+                required
+        >
+      </div>
+
+      <div class="form-group">
+        <label>Senha</label>
+
+        <input
+                type="password"
+                name="password"
+                placeholder="Digite sua senha"
+                required
+        >
+      </div>
+
+      <button class="login-btn" type="submit">
+        Entrar no Painel
+      </button>
+
+    </form>
+
+    <div class="bottom">
+      <a class="btn-text" href="/index.html">
+        ← Voltar para o site
+      </a>
+    </div>
+
+  </div>
+
+</div>
+
+<script>
+
+  const params = new URLSearchParams(window.location.search);
+
+  if(params.get("error") !== null){
+    document.getElementById("error-msg").style.display = "block";
+  }
+
+</script>
+
+</body>
+</html>

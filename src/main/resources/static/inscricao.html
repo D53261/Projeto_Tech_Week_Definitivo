@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inscrição — Tech Week</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+
+<body>
+
+<nav class="nav">
+  <div class="nav-logo">
+    <a href="index.html"><span class="nav-logo-bracket">[</span>TECH<span class="nav-accent">WEEK</span><span class="nav-logo-bracket">]</span></a>
+  </div>
+</nav>
+
+<section class="section-form" style="padding-top:8rem;">
+  <div class="container">
+
+    <div class="section-header">
+      <span class="section-tag">// RF02</span>
+      <h2 class="section-title">Inscrição de Participante</h2>
+    </div>
+
+    <div class="form-card">
+      <div id="form-msg" class="form-msg"></div>
+
+      <div class="form-group">
+        <label>Nome completo *</label>
+        <input type="text" id="nome" placeholder="Seu nome" />
+      </div>
+
+      <div class="form-group">
+        <label>Email *</label>
+        <input type="email" id="email" placeholder="seu@email.com" />
+      </div>
+
+      <div class="form-group">
+        <label>RA *</label>
+        <input type="text" id="ra" placeholder="Ex: 12345678" />
+      </div>
+
+      <div class="form-group">
+        <label>Curso</label>
+
+        <input
+                type="text"
+                id="curso"
+                placeholder="Ex: Ciência da Computação"
+                oninput="toggleSerie()"
+        />
+      </div>
+
+      <div class="form-group">
+        <label>Série</label>
+
+        <select id="serie" disabled>
+          <option value="">Selecione um curso primeiro</option>
+
+          <option>1º Período</option>
+          <option>2º Período</option>
+          <option>3º Período</option>
+          <option>4º Período</option>
+          <option>5º Período</option>
+          <option>6º Período</option>
+          <option>7º Período</option>
+          <option>8º Período</option>
+        </select>
+      </div>
+
+      <div class="form-check">
+        <input type="checkbox" id="coffe" />
+        <label for="coffe">Desejo participar do coffe break ☕</label>
+      </div>
+
+      <button type="button" class="btn-primary full" onclick="enviarInscricao()">
+        Confirmar Inscrição
+      </button>
+
+    </div>
+
+  </div>
+</section>
+
+<script src="/js/api.js"></script>
+<script src="/js/inscricao.js"></script>
+</body>
+</html>

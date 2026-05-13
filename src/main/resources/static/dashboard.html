@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Dashboard Admin — Tech Week</title>
+
+    <link rel="stylesheet" href="/style.css">
+
+    <link
+            href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;600;700;800&display=swap"
+            rel="stylesheet"
+    >
+</head>
+
+<body>
+
+<div class="adm-wrapper">
+
+    <aside class="sidebar">
+
+        <div class="sidebar-logo">
+            [TECH<span class="nav-accent">WEEK</span>]
+        </div>
+
+        <span class="sidebar-section">Painel</span>
+
+        <button class="sidebar-link active" onclick="mostrarAba('resumo')">
+            ◈ Resumo
+        </button>
+
+        <button class="sidebar-link" onclick="mostrarAba('participantes')">
+            ◉ Participantes
+        </button>
+
+        <button class="sidebar-link" onclick="mostrarAba('projetos')">
+            ◧ Projetos
+        </button>
+
+        <button class="sidebar-link" onclick="logout()">
+            ⎋ Sair
+        </button>
+
+    </aside>
+
+    <main class="adm-main">
+
+        <section id="aba-resumo" class="tab-content active">
+
+            <div class="adm-topbar">
+                <div>
+                    <h1>Dashboard</h1>
+                    <p id="data-hora">Carregando...</p>
+                </div>
+                <button class="btn-outline small" onclick="carregarTudo()">
+                    ↺ Atualizar
+                </button>
+            </div>
+
+            <div class="stat-grid">
+
+                <div class="stat-card">
+                    <div class="stat-card-label">
+                        <span class="dot"></span>
+                        Inscritos
+                    </div>
+                    <div class="stat-card-value" id="m-inscritos">0</div>
+                    <div class="stat-card-sub">
+                        participantes cadastrados
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-card-label">
+                        <span class="dot blue"></span>
+                        Projetos
+                    </div>
+                    <div class="stat-card-value" id="m-projetos">0</div>
+                    <div class="stat-card-sub">
+                        projetos enviados
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-card-label">
+                        <span class="dot yellow"></span>
+                        coffe Break
+                    </div>
+                    <div class="stat-card-value" id="m-coffe">0</div>
+
+                    <div class="stat-card-sub">
+                        participantes confirmados
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel-grid">
+
+                <div class="panel">
+
+                    <div class="panel-header">
+                        <h3>Últimas Inscrições</h3>
+                    </div>
+
+                    <div class="mini-list" id="lista-ultimos-inscritos">
+                        <div class="adm-loading">
+                            <div class="adm-spinner"></div>
+                            Carregando...
+                        </div>
+                    </div>
+                </div>
+
+                <div class="panel">
+                    <div class="panel-header">
+                        <h3>Últimos Projetos</h3>
+                    </div>
+                    <div class="mini-list" id="lista-ultimos-projetos">
+                        <div class="adm-loading">
+                            <div class="adm-spinner"></div>
+                            Carregando...
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel">
+
+                <div class="panel-header">
+                    <h3>Inscritos por Curso</h3>
+                </div>
+
+                <div class="mini-list" id="lista-cursos">
+                    <div class="adm-loading">
+                        <div class="adm-spinner"></div>
+                        Carregando...
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="aba-participantes" class="tab-content">
+            <div class="adm-topbar">
+                <div>
+                    <h1>Participantes</h1>
+                    <p>Todos os inscritos</p>
+                </div>
+                <button
+                        class="btn-outline small"
+                        onclick="exportarCSV('participantes')"
+                >
+                    ↓ Exportar CSV
+                </button>
+            </div>
+
+            <div class="panel">
+                <div class="filter-bar">
+                    <input
+                            type="text"
+                            class="filter-input"
+                            id="busca-participantes"
+                            placeholder="Buscar nome ou RA..."
+                            oninput="filtrarParticipantes()"
+                    >
+
+                    <span
+                            class="filter-count"
+                            id="count-participantes"
+                    >
+            0 registros
+          </span>
+                </div>
+
+                <div class="adm-table-wrap">
+
+                    <table class="adm-table">
+
+                        <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Nome</th>
+                            <th>RA</th>
+                            <th>Curso</th>
+                            <th>Período</th>
+                            <th>coffe</th>
+                        </tr>
+                        </thead>
+
+                        <tbody id="tbody-participantes">
+                        <tr>
+                            <td colspan="6">
+                                <div class="adm-loading">
+                                    <div class="adm-spinner"></div>
+                                    Carregando...
+                                </div>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <section id="aba-projetos" class="tab-content">
+
+            <div class="adm-topbar">
+
+                <div>
+                    <h1>Projetos</h1>
+                    <p>Projetos enviados pelos participantes</p>
+                </div>
+
+                <button
+                        class="btn-outline small"
+                        onclick="exportarCSV('projetos')"
+                >
+                    ↓ Exportar CSV
+                </button>
+
+            </div>
+            <div class="panel">
+                <div class="filter-bar">
+
+                    <input
+                            type="text"
+                            class="filter-input"
+                            id="busca-projetos"
+                            placeholder="Buscar projeto ou RA..."
+                            oninput="filtrarProjetos()"
+                    >
+
+                    <span
+                            class="filter-count"
+                            id="count-projetos"
+                    >
+            0 registros
+          </span>
+                </div>
+                <div class="adm-table-wrap">
+                    <table class="adm-table">
+                        <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Projeto</th>
+                            <th>Responsável</th>
+                            <th>RA</th>
+                            <th>Descrição</th>
+                        </tr>
+                        </thead>
+                        <tbody id="tbody-projetos">
+                        <tr>
+                            <td colspan="5">
+                                <div class="adm-loading">
+                                    <div class="adm-spinner"></div>
+                                    Carregando...
+                                </div>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+    </main>
+</div>
+<script src="/js/api.js"></script>
+<script src="/js/dashboard.js"></script>
+
+</body>
+</html>

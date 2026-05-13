@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Projeto — Tech Week</title>
+    <link rel="stylesheet" href="/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet"/>
+</head>
+
+<body>
+
+<nav class="nav">
+    <div class="nav-logo">
+        <a href="index.html" style="text-decoration:none; color:inherit;">
+            <span class="nav-logo-bracket">[</span>TECH<span class="nav-accent">WEEK</span><span class="nav-logo-bracket">]</span>
+        </a>
+    </div>
+</nav>
+
+<section class="section-form" style="padding-top: 8rem; padding-bottom: 4rem;">
+    <div class="container">
+
+        <div class="section-header">
+            <span class="section-tag">// RF09</span>
+            <h2 class="section-title">Cadastro de Projeto</h2>
+            <p class="section-subtitle" style="margin-top:.5rem; color:var(--color-muted,#888); font-size:.9rem;">
+                Apenas participantes inscritos podem cadastrar projetos.<br>
+                Seu nome e RA serão verificados antes do envio.
+            </p>
+        </div>
+
+        <div class="form-card">
+
+            <div class="form-steps">
+                <span class="step-badge">① Verificar inscrição</span>
+                <span class="step-badge">② Validar RA único</span>
+                <span class="step-badge">③ Registrar projeto</span>
+            </div>
+
+            <div id="form-msg" class="form-msg"></div>
+
+            <div class="form-group">
+                <label>Nome do responsável *</label>
+                <input type="text" id="nome" placeholder="Seu nome completo (igual ao da inscrição)" autocomplete="name" />
+            </div>
+
+            <div class="form-group">
+                <label>RA (Registro Acadêmico) *</label>
+                <input type="text" id="ra" placeholder="Ex: 12345678" inputmode="numeric" maxlength="12" />
+            </div>
+
+            <div class="form-group">
+                <label>Nome do projeto *</label>
+                <input type="text" id="projeto" placeholder="Como seu projeto se chama" />
+            </div>
+
+            <div class="form-group">
+                <label>Descrição *</label>
+                <textarea
+                        id="descricao"
+                        rows="5"
+                        placeholder="Descreva brevemente o seu projeto: o que faz, qual problema resolve, tecnologias usadas…"
+                ></textarea>
+                <span id="desc-contador" class="desc-counter">0 caracteres (mínimo 20)</span>
+            </div>
+
+            <button id="btn-cadastrar" class="btn-primary full" onclick="enviarProjeto()">
+                Cadastrar Projeto
+            </button>
+
+            <a href="index.html#projetos" class="btn-return">← Voltar para projetos</a>
+
+        </div>
+
+    </div>
+</section>
+
+<script src="/js/api.js"></script>
+<script src="/js/projeto.js"></script>
+</body>
+</html>

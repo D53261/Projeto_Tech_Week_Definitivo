@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coffee Break — Tech Week</title>
+    <link rel="stylesheet" href="/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet"/>
+</head>
+
+<body>
+
+<nav class="nav">
+    <div class="nav-logo">
+        <a href="index.html" style="text-decoration:none; color:inherit;">
+            <span class="nav-logo-bracket">[</span>TECH<span class="nav-accent">WEEK</span><span class="nav-logo-bracket">]</span>
+        </a>
+    </div>
+</nav>
+
+<section class="section-form" style="padding-top: 8rem;">
+    <div class="container">
+
+        <div class="section-header">
+            <span class="section-tag">// RF08</span>
+            <h2 class="section-title">Coffee Break</h2>
+        </div>
+
+        <div class="form-card">
+
+            <div id="view-form">
+
+                <p class="form-intro">
+                    Confirme sua presença no coffee break informando seu nome e e-mail cadastrados na inscrição.
+                    Seu cadastro será verificado e a confirmação atualizada automaticamente.
+                </p>
+
+                <div id="form-msg" class="form-msg"></div>
+
+                <div class="form-group">
+                    <label>Nome completo *</label>
+                    <input
+                            type="text"
+                            id="nome"
+                            placeholder="Como você se inscreveu"
+                            autocomplete="name"
+                    />
+                </div>
+
+                <div class="form-group">
+                    <label>E-mail *</label>
+                    <input
+                            type="email"
+                            id="email"
+                            placeholder="seu@email.com"
+                            autocomplete="email"
+                    />
+                </div>
+
+                <button class="btn-primary full" id="btn-confirmar" onclick="confirmarCoffee()">
+                    <span class="btn-label">Confirmar Presença</span>
+                    <span class="spinner"></span>
+                </button>
+            </div>
+
+            <div id="view-success" style="display:none; text-align:center; padding: 1rem 0;">
+                <div class="status-card success">
+                    <span class="status-icon">✅</span>
+                    <p class="status-title">Presença confirmada!</p>
+                    <p class="status-desc" id="success-desc">Você está na lista do coffee break.</p>
+                    <span class="coffee-badge">☕ Coffee Break · Confirmado</span>
+                </div>
+                <button class="btn-outline" style="margin-top: 1.5rem;" onclick="voltarForm()">
+                    Confirmar outro participante
+                </button>
+            </div>
+
+            <div id="view-not-found" style="display:none; text-align:center; padding: 1rem 0;">
+                <div class="status-card error">
+                    <span class="status-icon">⚠️</span>
+                    <p class="status-title">Cadastro não encontrado</p>
+                    <p class="status-desc">
+                        Não encontramos nenhum participante com esses dados.
+                        Verifique se o nome e e-mail estão exatamente como usados na inscrição.
+                    </p>
+                </div>
+                <div style="display:flex; gap:1rem; justify-content:center; flex-wrap:wrap; margin-top:1.5rem;">
+                    <button class="btn-outline" onclick="voltarForm()">Tentar novamente</button>
+                    <a href="./inscricao.html" class="btn-primary" style="text-decoration:none; display:inline-flex; align-items:center;">
+                        Fazer inscrição
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<script src="/js/api.js"></script>
+<script src="/js/coffe.js"></script>
+</body>
+</html>

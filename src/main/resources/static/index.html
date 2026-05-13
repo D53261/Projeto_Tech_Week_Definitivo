@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Tech Week — UniCesumar</title>
+  <link rel="stylesheet" href="/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet"/>
+</head>
+<body>
+
+<nav class="nav" id="nav">
+  <div class="nav-top">
+    <div class="nav-logo">
+      <span class="nav-logo-bracket">[</span>
+      TECH
+      <span class="nav-accent">WEEK</span>
+      <span class="nav-logo-bracket">]</span>
+    </div>
+    <div class="nav-actions">
+      <a href="/inscricao.html">
+        <button class="btn-outline">
+          Inscrever-se
+        </button>
+      </a>
+      <a href="/adm.html">
+        <button class="btn-ghost">
+          Admin
+        </button>
+      </a>
+    </div>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#sobre">Sobre</a></li>
+    <li><a href="#palestrantes">Palestrantes</a></li>
+    <li><a href="#cronograma">Cronograma</a></li>
+    <li><a href="#projetos">Projetos</a></li>
+    <li><a href="#patrocinadores">Patrocinadores</a></li>
+    <li><a href="#faq">FAQ</a></li>
+    <li><a href="#local">Local</a></li>
+  </ul>
+</nav>
+
+<section class="hero" id="sobre">
+  <div class="hero-bg">
+    <div class="grid-lines"></div>
+  </div>
+  <div class="hero-content">
+    <div class="hero-tag">UniCesumar · Londrina</div>
+    <h1 class="hero-title">
+      <span class="line-1">TECH</span>
+      <span class="line-2">WEEK<em>26</em></span>
+    </h1>
+    <p class="hero-sub">O maior evento de tecnologia da faculdade. Palestras, projetos, networking e muito mais em uma semana intensa.</p>
+    <div class="hero-cta">
+      <a href="/inscricao.html"><button class="btn-primary" onclick="openModal('modal-inscricao')">Garantir Vaga</button></a>
+      <a href="#cronograma" class="btn-text">Ver Programação →</a>
+    </div>
+    <div class="hero-stats" id="heroStats">
+      <div class="stat"><span class="stat-num" id="statPalestrantes">—</span><span class="stat-label">Palestrantes</span></div>
+      <div class="stat-divider"></div>
+      <div class="stat"><span class="stat-num" id="statProjetos">—</span><span class="stat-label">Projetos</span></div>
+      <div class="stat-divider"></div>
+      <div class="stat"><span class="stat-num" id="statInscritos">—</span><span class="stat-label">Inscritos</span></div>
+    </div>
+  </div>
+  <div class="hero-scroll-hint">scroll ↓</div>
+</section>
+
+<section class="section section-muted" id="palestrantes">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">// RF01</span>
+      <h2 class="section-title">Palestrantes</h2>
+    </div>
+    <div class="speakers-grid" id="speakersGrid">
+      <div class="loading-state">Carregando palestrantes...</div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-dark" id="cronograma">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">// RF01</span>
+      <h2 class="section-title">Cronograma</h2>
+    </div>
+    <div class="schedule-list" id="scheduleList">
+      <div class="loading-state">Carregando programação...</div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-muted" id="projetos">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">// RF01 · RF09</span>
+      <h2 class="section-title">Projetos</h2>
+      <a href="/projeto.html"><button class="btn-outline small" onclick="openModal('modal-projeto')">+ Cadastrar Projeto</button></a>
+    </div>
+    <div class="projects-grid" id="projectsGrid">
+      <div class="loading-state">Carregando projetos...</div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-dark" id="patrocinadores">
+  <div class="container">
+
+    <div class="section-header">
+      <span class="section-tag">// RF01</span>
+      <h2 class="section-title">Patrocinadores</h2>
+    </div>
+    <div class="sponsors-grid">
+      <div class="sponsor-card">
+        <img
+          src="./img/caco-alimentacao.jpg"
+          alt="CACO Alimentação"
+          class="sponsor-logo"
+        >
+      </div>
+      <div class="sponsor-card">
+        <img
+          src="./img/logo-adilson.jpg"
+          alt="Adilson"
+          class="sponsor-logo"
+        >
+      </div>
+      <div class="sponsor-card">
+        <img
+          src="./img/logo-victorios.jpeg"
+          alt="Victorios"
+          class="sponsor-logo"
+        >
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-muted" id="local">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">// RF04</span>
+      <h2 class="section-title">Local</h2>
+    </div>
+    <div class="location-card">
+      <div class="location-info">
+        <div class="location-icon">📍</div>
+        <div>
+          <h3>UniCesumar — Londrina</h3>
+          <p>Av. Santa Mônica, 450 - Franca,<br>Londrina — PR, 86027-610</p>
+          <a href="https://maps.google.com/?q=UniCesumar+Londrina" target="_blank" class="btn-outline small" style="margin-top:1rem; display:inline-block">Abrir no Maps →</a>
+        </div>
+      </div>
+      <div class="location-map">
+        <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3664.3325707007234!2d-51.143334424677676!3d-23.303689378977797!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94eb437a3d1d44af%3A0x9c9f46adfc62d1eb!2sUniCesumar%20-%20Londrina!5e0!3m2!1spt-BR!2sbr!4v1777946071252!5m2!1spt-BR!2sbr"
+                width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-dark" id="faq">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">// RF05</span>
+      <h2 class="section-title">FAQ</h2>
+    </div>
+    <div class="faq-list" id="faqList">
+    </div>
+  </div>
+</section>
+
+<section class="section coffee-section" id="coffee">
+  <div class="container">
+    <div class="coffee-card">
+      <div class="coffee-text">
+        <span class="section-tag">// RF08</span>
+        <h2>Coffee Break</h2>
+        <p>Garanta sua vaga no coffee break do evento. Disponível apenas para participantes inscritos.</p>
+        <a href="/coffe.html"><button class="btn-primary" onclick="openModal('modal-coffee')">Confirmar Coffee Break</button></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <span class="nav-logo-bracket">[</span>TECH<span class="nav-accent">WEEK</span><span class="nav-logo-bracket">]</span>
+        <p>UniCesumar · Londrina · 2026</p>
+      </div>
+      <div class="footer-links">
+        <a href="#sobre">Sobre</a>
+        <a href="#palestrantes">Palestrantes</a>
+        <a href="#cronograma">Cronograma</a>
+        <a href="#faq">FAQ</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>Desenvolvido pelos alunos da UniCesumar</span>
+    </div>
+  </div>
+</footer>
+
+<script src="/js/api.js"></script>
+<script src="/js/app.js"></script>
+</body>
+</html>
