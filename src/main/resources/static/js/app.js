@@ -182,22 +182,38 @@ async function carregarProjetos() {
 }
 
 const FAQ_ITEMS = [
-
   {
     q: 'Quem pode participar da Tech Week?',
-    a: 'Qualquer um pode participar normalmente das apresentações.'
+    a: 'Não é necessário estar matriculado em algu curso da faculdade Unicesumar, basta ter interesse em aprender sobre a área de tecnologia.'
   },
-
   {
     q: 'A inscrição é gratuita?',
-    a: 'Sim! A participação no evento é totalmente gratuita.'
+    a: 'Sim! A participação no evento é totalmente gratuita. O coffee break é opcional e precisa ser confirmado separadamente pelo site.'
   },
-
   {
     q: 'Como faço para cadastrar meu projeto?',
-    a: 'Você precisa estar inscrito primeiro.'
+    a: 'Você precisa estar inscrito no evento primeiro e matriculado na faculdade. Depois, acesse a página de cadastro de projeto, informe seu nome completo (igual ao da inscrição), seu RA e os dados do projeto. Cada participante pode cadastrar apenas um projeto.'
+  },
+  {
+    q: 'O que acontece se eu errar meu RA ou nome na inscrição?',
+    a: 'Entre em contato com a organização pelo e-mail do evento antes do dia. Alterações feitas após o início da Tech Week não poderão ser garantidas.'
+  },
+  {
+    q: 'Preciso estar presente em todos os dias do evento?',
+    a: 'Não é obrigatório. Você pode comparecer nos dias e palestras que mais te interessam. Recomendamos, porém, verificar o cronograma com antecedência — algumas atividades têm vagas limitadas.'
+  },
+  {
+    q: 'Vou receber certificado de participação?',
+    a: 'Sim. O certificado é emitido digitalmente ao final do evento para todos os participantes com inscrição confirmada e presença registrada.'
+  },
+  {
+    q: 'Como funciona o coffee break?',
+    a: 'O coffee break acontece em horário definido no cronograma. Para garantir sua vaga, confirme sua participação na seção "Coffee Break" do site. A confirmação é necessária para controle de quantidade.'
+  },
+  {
+    q: 'Posso apresentar um projeto em grupo?',
+    a: 'Sim, projetos em grupo são bem-vindos. No entanto, o cadastro é feito por um único responsável — informe o nome e RA do responsável pelo grupo. Os demais integrantes devem estar inscritos no evento individualmente e matriculados na faculdade para apresentar projetos.'
   }
-
 ];
 
 
