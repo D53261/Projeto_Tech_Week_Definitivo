@@ -2428,6 +2428,7 @@ video {
   .btn-outline,
   .btn-ghost {
     width: 100%;
+    font-size: 0.9rem;
   }
 
 }
