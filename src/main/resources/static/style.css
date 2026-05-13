@@ -1920,6 +1920,8 @@ h1 {
   .hero-cta .btn-outline {
     text-align: center;
     justify-content: center;
+    font-size: 0.9rem;
+    padding: 10px 14px;
   }
 
   .hero-stats {
@@ -2429,6 +2431,7 @@ video {
   .btn-ghost {
     width: 100%;
     font-size: 0.9rem;
+    padding: 10px 14px;
   }
 
 }
