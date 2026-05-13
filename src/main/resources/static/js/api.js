@@ -1,5 +1,5 @@
 const API = (() => {
-  const BASE_URL = 'http://localhost:8080';
+  const BASE_URL = 'https://techweek-5idz.onrender.com';
 
   const headers = () => ({
     'Content-Type': 'application/json',
