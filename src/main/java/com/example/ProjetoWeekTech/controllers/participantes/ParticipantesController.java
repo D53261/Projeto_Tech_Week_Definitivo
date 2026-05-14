@@ -20,16 +20,23 @@ public class ParticipantesController {
     private final ParticipantesService service;
 
     @CrossOrigin(origins = "*")
-    @PostMapping
-    public ResponseEntity<?> salvar(@RequestBody Participantes participante) {
-        try {
-            Participantes salvo = service.salvar(participante);
-            return ResponseEntity.status(HttpStatus.CREATED).body(salvo);
-        } catch (RuntimeException e) {
-            return ResponseEntity.status(HttpStatus.CONFLICT)
-                    .body(Map.of("mensagem", e.getMessage()));
-        }
+@PostMapping
+public ResponseEntity<?> salvar(@RequestBody Participantes participante) {
+    if (participante.getRa() != null &&
+        participante.getRa().trim().isEmpty()) {
+        participante.setRa(null);
     }
+    try {
+        Participantes salvo = service.salvar(participante);
+        return ResponseEntity
+                .status(HttpStatus.CREATED)
+                .body(salvo);
+    } catch (RuntimeException e) {
+        return ResponseEntity
+                .status(HttpStatus.CONFLICT)
+                .body(Map.of("mensagem", e.getMessage()));
+    }
+}
 
     @CrossOrigin(origins = "*")
     @GetMapping("/{id}")
