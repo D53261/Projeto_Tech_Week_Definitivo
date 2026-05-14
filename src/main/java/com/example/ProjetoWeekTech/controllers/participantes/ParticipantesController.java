@@ -14,36 +14,35 @@ import java.util.Optional;
 import java.util.UUID;
 
 @RestController
+@CrossOrigin(origins = "*")
 @RequestMapping("/participantes")
 @RequiredArgsConstructor
 public class ParticipantesController {
     private final ParticipantesService service;
 
-    @CrossOrigin(origins = "*")
-@PostMapping
-public ResponseEntity<?> salvar(@RequestBody Participantes participante) {
-    if (participante.getRa() != null &&
-        participante.getRa().trim().isEmpty()) {
-        participante.setRa(null);
+    @PostMapping
+    public ResponseEntity<?> salvar(@RequestBody Participantes participante) {
+        if (participante.getRa() != null &&
+            participante.getRa().trim().isEmpty()) {
+            participante.setRa(null);
+        }
+        try {
+            Participantes salvo = service.salvar(participante);
+            return ResponseEntity
+                    .status(HttpStatus.CREATED)
+                    .body(salvo);
+        } catch (RuntimeException e) {
+            return ResponseEntity
+                    .status(HttpStatus.CONFLICT)
+                    .body(Map.of("mensagem", e.getMessage()));
+        }
     }
-    try {
-        Participantes salvo = service.salvar(participante);
-        return ResponseEntity
-                .status(HttpStatus.CREATED)
-                .body(salvo);
-    } catch (RuntimeException e) {
-        return ResponseEntity
-                .status(HttpStatus.CONFLICT)
-                .body(Map.of("mensagem", e.getMessage()));
-    }
-}
 
-    @CrossOrigin(origins = "*")
     @GetMapping("/{id}")
     public ResponseEntity<ParticipantesDTO> buscarPorId(@PathVariable String id) {
         UUID idParticipante = UUID.fromString(id);
         Optional<Participantes> participanteOpcional = service.buscarPorId(idParticipante);
-        if (!participanteOpcional.isPresent()) {
+        if (participanteOpcional.isPresent()) {
             Participantes participantes = participanteOpcional.get();
             ParticipantesDTO dto = new ParticipantesDTO(
                     participantes.getId(),
@@ -59,7 +58,6 @@ public ResponseEntity<?> salvar(@RequestBody Participantes participante) {
         return ResponseEntity.notFound().build();
     }
 
-    @CrossOrigin(origins = "*")
     @PostMapping("/coffe-break")
     public ResponseEntity<?> mudarCoffeBreak(@RequestBody CoffeRequestDTO coffeRequestDTO) {
 
@@ -90,7 +88,6 @@ public ResponseEntity<?> salvar(@RequestBody Participantes participante) {
         return ResponseEntity.notFound().build();
     }
 
-    @CrossOrigin(origins = "*")
     @GetMapping
     public ResponseEntity<List<ParticipantesDTO>> buscarTodos() {
         return ResponseEntity.ok(service.buscarTodos().stream().map(participantes -> new ParticipantesDTO(
