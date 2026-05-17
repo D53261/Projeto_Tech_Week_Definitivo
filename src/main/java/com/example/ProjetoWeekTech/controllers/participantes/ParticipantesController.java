@@ -59,33 +59,30 @@ public class ParticipantesController {
     }
 
     @PostMapping("/coffe-break")
-    public ResponseEntity<?> mudarCoffeBreak(@RequestBody CoffeRequestDTO coffeRequestDTO) {
-
-        Optional<Participantes> participanteOpcional =
-                service.buscarPorNomeAndEmail(coffeRequestDTO.getNome(), coffeRequestDTO.getEmail());
-
-        if (participanteOpcional.isPresent()) {
-
-            Participantes participante = participanteOpcional.get();
-
-            participante.setCoffe(true);
-
-            service.salvar(participante);
-
-            ParticipantesDTO dto = new ParticipantesDTO(
-                    participante.getId(),
-                    participante.getNome(),
-                    participante.getEmail(),
-                    participante.getRa(),
-                    participante.isCoffe(),
-                    participante.getCurso(),
-                    participante.getSerie()
-            );
-
-            return ResponseEntity.ok(dto);
+    public ResponseEntity<?> mudarCoffeBreak(@RequestBody CoffeRequestDTO dto) {
+        try {
+            Optional<Participantes> participanteOpcional =
+                    service.buscarPorNomeAndEmail(dto.getNome(), dto.getEmail());
+            if (participanteOpcional.isPresent()) {
+                Participantes participante = participanteOpcional.get();
+                participante.setCoffe(true);
+                service.salvar(participante);
+                return ResponseEntity.ok(
+                        Map.of("mensagem", "Coffee confirmado")
+                );
+            }
+            return ResponseEntity
+                    .status(HttpStatus.NOT_FOUND)
+                    .body(Map.of(
+                            "mensagem", "Participante não encontrado"
+                    ));
+        } catch (Exception e) {
+            return ResponseEntity
+                    .status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body(Map.of(
+                            "mensagem", e.getMessage()
+                    ));
         }
-
-        return ResponseEntity.notFound().build();
     }
 
     @GetMapping
