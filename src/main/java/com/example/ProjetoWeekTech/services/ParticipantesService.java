@@ -21,6 +21,10 @@ public class ParticipantesService {
         return repository.save(participante);
     }
 
+    public Participantes atualizar(Participantes participante) {
+        return repository.save(participante);
+    }
+
     public Optional<Participantes> buscarPorId(UUID id) {
         return repository.findById(id);
     }
