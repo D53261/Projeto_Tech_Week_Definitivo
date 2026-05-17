@@ -42,9 +42,17 @@ const API = (() => {
       return null;
     }
 
-    const texto = await res.text();
+    const contentType = res.headers.get('content-type');
 
-    return texto ? JSON.parse(texto) : null;
+    if (contentType && contentType.includes('application/json')) {
+      return await res.json();
+    }
+    
+    const texto = await res.text();
+    
+    console.error('Resposta inesperada:', texto);
+    
+    throw new Error('Resposta inválida do servidor');
   }
 
   return {
