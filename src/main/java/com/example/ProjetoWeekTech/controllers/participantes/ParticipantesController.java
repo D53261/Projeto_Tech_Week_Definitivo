@@ -66,7 +66,7 @@ public class ParticipantesController {
             if (participanteOpcional.isPresent()) {
                 Participantes participante = participanteOpcional.get();
                 participante.setCoffe(true);
-                service.salvar(participante);
+                service.atualizar(participante);
                 return ResponseEntity.ok(
                         Map.of("mensagem", "Coffee confirmado")
                 );
