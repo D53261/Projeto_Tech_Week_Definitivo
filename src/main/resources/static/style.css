@@ -765,41 +765,54 @@ h1 {
 
 .speakers-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 2rem;
 }
 
 .speaker-card {
-  padding: 2rem;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  overflow: hidden;
+
+  transition: .3s ease;
 }
 
-.speaker-avatar {
-  width: 64px;
-  height: 64px;
-  border-radius: 50%;
-  background: var(--card2);
-  border: 2px solid var(--border);
-  margin-bottom: 1.25rem;
+.speaker-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--accent);
+}
+
+.speaker-image {
+  width: 100%;
+  height: 320px;
+
   object-fit: cover;
+  object-position: center;
+
+  display: block;
 }
 
-.speaker-name {
-  font-family: var(--font-display);
-  font-weight: 700;
-  font-size: 1.05rem;
-  margin-bottom: .3rem;
+.speaker-content {
+  padding: 1.5rem;
 }
 
 .speaker-role {
   color: var(--accent);
   font-size: .8rem;
-  margin-bottom: .75rem;
+  margin-bottom: .6rem;
+  display: block;
 }
 
-.speaker-bio {
+.speaker-content h3 {
+  font-size: 1.2rem;
+  margin-bottom: .8rem;
+}
+
+.speaker-content p {
   color: var(--muted);
-  font-size: .85rem;
   line-height: 1.7;
+  font-size: .92rem;
 }
 
 .projects-grid {
@@ -2218,97 +2231,71 @@ h1 {
 }
 
 .sponsors-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 1.5rem;
+  display: flex;
+  flex-wrap: wrap;
+
+  justify-content: center;
+
+  gap: 2.5rem;
+
+  margin-top: 3rem;
 }
 
 .sponsor-card {
   position: relative;
   overflow: hidden;
 
-  background:
-    linear-gradient(
-      135deg,
-      rgba(255,255,255,.04),
-      rgba(255,255,255,.015)
-    );
+  flex: 0 0 220px;
 
-  border: 1px solid rgba(255,255,255,.08);
-
-  border-radius: 24px;
-
-  padding: 2rem;
-
-  min-height: 180px;
+  width: 220px;
+  height: 180px;
 
   display: flex;
   align-items: center;
   justify-content: center;
 
-  backdrop-filter: blur(20px);
+  padding: 1.5rem;
 
-  transition:
-    transform .25s ease,
-    border-color .25s ease,
-    box-shadow .25s ease;
-}
-
-.sponsor-card::before {
-  content: '';
-
-  position: absolute;
-  inset: 0;
+  border-radius: 28px;
 
   background:
     linear-gradient(
       135deg,
-      rgba(0,229,160,.08),
-      transparent 60%
+      rgba(255,255,255,.05),
+      rgba(255,255,255,.015)
     );
 
-  opacity: 0;
+  border: 1px solid rgba(255,255,255,.08);
 
-  transition: opacity .25s ease;
+  backdrop-filter: blur(20px);
+
+  transition: .25s ease;
 }
 
 .sponsor-card:hover {
-  transform: translateY(-6px);
+  transform: translateY(-6px) scale(1.03);
 
-  border-color: rgba(0,229,160,.25);
+  border-color: rgba(0,229,160,.35);
 
   box-shadow:
-    0 25px 60px rgba(0,0,0,.35);
-}
-
-.sponsor-card:hover::before {
-  opacity: 1;
+    0 0 30px rgba(0,229,160,.12);
 }
 
 .sponsor-logo {
-  position: relative;
-  z-index: 1;
-
-  width: 100%;
-  max-width: 220px;
-
-  max-height: 120px;
+  max-width: 85%;
+  max-height: 110px;
 
   object-fit: contain;
 
   filter:
-    drop-shadow(0 10px 25px rgba(0,0,0,.35));
+    brightness(1.12)
+    contrast(1.1);
 
-  transition:
-    transform .25s ease,
-    filter .25s ease;
+  transition: .25s ease;
 }
 
 .sponsor-card:hover .sponsor-logo {
-  transform: scale(1.04);
-
-  filter:
-    drop-shadow(0 15px 35px rgba(0,229,160,.15));
+  transform: scale(1.05);
 }
 
 @media (max-width: 768px) {
@@ -2441,10 +2428,14 @@ video {
   .projects-grid,
   .participants-grid,
   .speakers-grid,
-  .sponsors-grid,
   .stat-grid,
   .panel-grid {
     grid-template-columns: 1fr;
+  }
+
+  .sponsors-grid {
+    grid-template-columns:
+      repeat(auto-fit, minmax(140px, 1fr));
   }
 
 }
@@ -2562,11 +2553,6 @@ video {
 
   .nav-actions button {
     width: 100%;
-  }
-
-  .sponsors-grid {
-    grid-template-columns: 1fr;
-    justify-items: center;
   }
 
   .sponsor-logo {
